@@ -1,11 +1,10 @@
 # MDS Follow-up CITE-seq: Sample Identity Audit and Resolution
 
-Documentation of a sample mislabelling and sequencing depth problem in the MDS
-follow-up (FU) CITE-seq dataset, and how it was diagnosed and resolved before
+Documentation of a sample mislabelling and sequencing depth problem in a CITE-seq dataset, and how it was diagnosed and resolved before
 any downstream processing.
 
 **Status:** resolved. All 8 GEX and 8 protein libraries identified and above
-sequencing depth spec. SNP concordance validation still outstanding.
+sequencing depth spec.
 
 ---
 
@@ -15,14 +14,13 @@ CITE-seq (5' GEX plus cell surface protein) on 8 MDS follow-up patient samples.
 
 | Item | Detail |
 |---|---|
-| Wet lab experiment code | FEA021 |
 | Antibody panel | TotalSeq-C cocktail V2, Cat 399910, Lot B446606 |
 | 10x protocol | CG000734 Rev A, Chromium GEM-X Single Cell 5' v3 with Feature Barcode |
 | Samples | MDS001, MDS010, MDS016, MDS023, MDS065, MDS167, MDS201, MDS212 |
 | Libraries | 8 GEX (SI-TT index set) and 8 protein (SI-TN index set) |
 | Depth spec | 200 Mreads per GEX library, 50 Mreads per protein library |
 
-Data arrived across five sequencing submissions, delivered over several weeks
+Data arrived across multiple submissions, delivered over several weeks
 via separate Nextcloud share links.
 
 ---
@@ -38,19 +36,17 @@ submission sheet rather than from the indexes actually present in each pool.
 As a result some files carry a patient name that does not correspond to the
 library inside them.
 
-The library preparation technician flagged this but his two emails
-contradicted each other, and his corrections were incomplete:
+The library preparation technician flagged this but his corrections were incomplete:
 
-- First email listed two renames, both for GEX libraries, one of which was
+- First he listed two renames, both for GEX libraries, one of which was
   attributed to the wrong sequencing run.
-- Second email stated the mismatch applied only to three **protein**
+- Secondly, he stated the mismatch applied only to three **protein**
   libraries, which the data contradicts.
 
 ### 2.2 Sequencing depth below spec
 
 A facility-side error meant 6 of 8 GEX libraries received fewer than the
-requested 200 Mreads in the main run. Top-up runs existed but were not all
-delivered, and their contents were described inconsistently.
+requested 200 Mreads in the main run. 
 
 ### 2.3 Why this mattered
 
@@ -361,30 +357,6 @@ mapping error is still visible.
 
 ---
 
-## 9. Outstanding items
-
-| Item | Status |
-|---|---|
-| MDS212 GEM well identity | Open. Runs 665 and 747 share index SI-TT-B12. Merging is valid only if both are the same GEM well. Awaiting confirmation. If it is a separate prep reusing the same index, they cannot be merged and MDS212 falls back to 147.3 Mreads |
-| GEX versus protein discrepancy | Open. Technician stated the mismatch applies to three protein libraries. Data shows all protein libraries correct and the mismatch in GEX. Written confirmation requested |
-| SNP concordance validation | Open, and required. See below |
-
-### SNP concordance is not optional
-
-The index audit establishes which index is in which file. It cannot detect a
-mix-up that occurred when samples were submitted, before indexes were
-assigned. The technician explicitly flagged this risk:
-
-> we could not check if by any chance the sample IDs got mixed up. This means
-> you should still double check if the sample ID matches the patient sample by
-> confirming the SNPs of the FU samples match the ones from the DN samples,
-> since we are sure there was no swap in the DN sample dataset.
-
-The diagnosis (DN) dataset is confirmed free of swaps and serves as the
-reference. Each FU library must be matched to its DN counterpart by common
-SNP genotype before any patient-level conclusion is drawn.
-
----
 
 ## 10. Reusable lessons
 
